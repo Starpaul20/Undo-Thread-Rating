@@ -37,7 +37,7 @@ function undorating_info()
 		"website"			=> "http://galaxiesrealm.com/index.php",
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",
-		"version"			=> "1.1",
+		"version"			=> "1.1.1",
 		"guid"				=> "46dcbb808564708d2577711ae0443b7a",
 		"compatibility"		=> "16*"
 	);
@@ -125,19 +125,22 @@ function undorating_run()
 		{
 			error($lang->error_notrated);
 		}
-		else if(!$mybb->user['uid'])
-		{
-			// clear cookie for Guests
-			my_setcookie("mybbratethread[{$thread['tid']}]", "");
-		}
 
 		$updatedrating = array(
 			"numratings" => intval($thread['numratings']) - 1,
 			"totalratings" => intval($thread['totalratings']) - $rating['rating'],
 		);
 
-		$db->delete_query("threadratings", "uid='".$mybb->user['uid']."' AND tid='".$thread['tid']."'");
-		$db->update_query("threads", $updatedrating, "tid='".$thread['tid']."'");
+		if($mybb->user['uid'])
+		{
+			$db->delete_query("threadratings", "uid='".$mybb->user['uid']."' AND tid='".$thread['tid']."'");
+			$db->update_query("threads", $updatedrating, "tid='".$thread['tid']."'");
+		}
+		else
+		{
+			// clear cookie for Guests
+			my_setcookie("mybbratethread[{$thread['tid']}]", "");
+		}
 
 		redirect(get_thread_link($thread['tid']), $lang->redirect_unrated);
 	}
@@ -152,7 +155,7 @@ function undorating_link()
 	$query = $db->simple_select("threadratings", "uid", "tid='{$tid}' AND uid='{$mybb->user['uid']}'");
 	$rated = $db->fetch_field($query, 'uid');
 	
-	if($mybb->usergroup['canundorating'] == 1 && $rated['uid'])
+	if($mybb->usergroup['canundorating'] == 1 && $rated)
 	{
 		eval("\$undorating = \"".$templates->get("showthread_ratethread_undo")."\";");
 		$ratethread = str_replace("<!-- undorating -->", $undorating, $ratethread);
