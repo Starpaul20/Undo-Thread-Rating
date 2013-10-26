@@ -37,7 +37,7 @@ function undorating_info()
 		"website"			=> "http://galaxiesrealm.com/index.php",
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",
-		"version"			=> "1.1.1",
+		"version"			=> "1.1.2",
 		"guid"				=> "46dcbb808564708d2577711ae0443b7a",
 		"compatibility"		=> "16*"
 	);
@@ -166,7 +166,7 @@ function undorating_link()
 function undorating_usergroup_permission($above)
 {
 	global $mybb, $lang, $form;
-	$lang->load("undorating");
+	$lang->load("undorating", true);
 
 	if($above['title'] == $lang->posting_rating_options && $lang->posting_rating_options)
 	{
