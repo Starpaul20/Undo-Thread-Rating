@@ -3,15 +3,15 @@
 
 ## Version number reset for MyBB 1.8 ##
 
-1.1.2
+1.1.2 (October 26th, 2013)
 - Bug: Fixed language error for 1.6.11
 
-1.1.1
+1.1.1 (August 24th, 2013)
 - Bug: Fixed PHP errors when using PHP 5.4 
 
-1.1
+1.1 (July 30th, 2011)
 - Bug: Fixed 1.6.4 bug
 - Optimization and general plugin updating
 
-1.0
+1.0 (May 8th, 2011)
 - Initial release
