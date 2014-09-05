@@ -31,9 +31,12 @@ $plugins->add_hook("admin_user_groups_edit_commit", "undorating_usergroup_permis
 // The information that shows up on the plugin manager
 function undorating_info()
 {
+	global $lang;
+	$lang->load("undorating", true);
+
 	return array(
-		"name"				=> "Undo Thread Rating",
-		"description"		=> "Allows users to delete their rating on a thread.",
+		"name"				=> $lang->undorating_info_name,
+		"description"		=> $lang->undorating_info_desc,
 		"website"			=> "http://galaxiesrealm.com/index.php",
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",

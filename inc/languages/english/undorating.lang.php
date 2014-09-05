@@ -4,6 +4,9 @@
  * Copyright 2011 Starpaul20
  */
 
+$l['undorating_info_name'] = "Undo Thread Rating";
+$l['undorating_info_desc'] = "Allows users to delete their rating on a thread.";
+
 $l['undo_rating'] = "Undo Rating";
 
 $l['error_invalidthread'] = "The specified thread is invalid or does not exist.";
