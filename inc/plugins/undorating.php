@@ -98,7 +98,7 @@ function undorating_run()
 			error_no_permission();
 		}
 
-		$tid = intval($mybb->input['tid']);
+		$tid = $mybb->get_input('tid', 1);
 		$thread = get_thread($tid);
 
 		if(!$thread['tid'])
@@ -129,8 +129,8 @@ function undorating_run()
 		}
 
 		$updatedrating = array(
-			"numratings" => intval($thread['numratings']) - 1,
-			"totalratings" => intval($thread['totalratings']) - $rating['rating'],
+			"numratings" => (int)$thread['numratings'] - 1,
+			"totalratings" => (int)$thread['totalratings'] - $rating['rating'],
 		);
 
 		if($mybb->user['uid'])
@@ -179,7 +179,7 @@ function undorating_usergroup_permission($above)
 function undorating_usergroup_permission_commit()
 {
 	global $mybb, $updated_group;
-	$updated_group['canundorating'] = intval($mybb->input['canundorating']);
+	$updated_group['canundorating'] = (int)$mybb->input['canundorating'];
 }
 
 ?>
