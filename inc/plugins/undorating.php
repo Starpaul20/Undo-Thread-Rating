@@ -49,7 +49,7 @@ function undorating_info()
 function undorating_activate()
 {
 	global $db, $cache;
-	$db->add_column("usergroups", "canundorating", "int(1) NOT NULL default '1'");
+	$db->add_column("usergroups", "canundorating", "tinyint(1) NOT NULL default '1'");
 	$cache->update_usergroups();
 
 	$insert_array = array(
