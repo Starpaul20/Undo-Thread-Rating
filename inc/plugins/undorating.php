@@ -63,6 +63,7 @@ function undorating_activate()
 
 	$cache->update_usergroups();
 
+	// Insert template
 	$insert_array = array(
 		'title'		=> 'showthread_ratethread_undo',
 		'template'	=> $db->escape_string('<span class="smalltext">[<a href="misc.php?action=do_undorating&amp;tid={$thread[\'tid\']}&amp;my_post_key={$mybb->post_code}">{$lang->undo_rating}</a>]</span>'),
@@ -82,10 +83,12 @@ function undorating_activate()
 function undorating_deactivate()
 {
 	global $db, $cache;
+
 	if($db->field_exists('canundorating', 'usergroups'))
 	{
 		$db->drop_column("usergroups", "canundorating");
 	}
+
 	$cache->update_usergroups();
 
 	$db->delete_query("templates", "title IN('showthread_ratethread_undo')");
