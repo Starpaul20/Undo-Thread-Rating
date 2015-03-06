@@ -50,7 +50,17 @@ function undorating_info()
 function undorating_activate()
 {
 	global $db, $cache;
-	$db->add_column("usergroups", "canundorating", "tinyint(1) NOT NULL default '1'");
+
+	switch($db->type)
+	{
+		case "pgsql":
+			$db->add_column("usergroups", "canundorating", "smallint NOT NULL default '1'");
+			break;
+		default:
+			$db->add_column("usergroups", "canundorating", "tinyint(1) NOT NULL default '1'");
+			break;
+	}
+
 	$cache->update_usergroups();
 
 	$insert_array = array(
