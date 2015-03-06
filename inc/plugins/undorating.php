@@ -165,14 +165,17 @@ function undorating_link()
 {
 	global $db, $mybb, $lang, $thread, $templates, $tid, $ratethread;
 	$lang->load("undorating");
-	
-	$query = $db->simple_select("threadratings", "uid", "tid='{$tid}' AND uid='{$mybb->user['uid']}'");
-	$rated = $db->fetch_field($query, 'uid');
-	
-	if($mybb->usergroup['canundorating'] == 1 && $rated)
+
+	if($mybb->usergroup['canundorating'] == 1)
 	{
-		eval("\$undorating = \"".$templates->get("showthread_ratethread_undo")."\";");
-		$ratethread = str_replace("<!-- undorating -->", $undorating, $ratethread);
+		$query = $db->simple_select("threadratings", "rid", "tid='{$tid}' AND uid='{$mybb->user['uid']}'");
+		$rated = $db->fetch_field($query, 'rid');
+
+		if($rated)
+		{
+			eval("\$undorating = \"".$templates->get("showthread_ratethread_undo")."\";");
+			$ratethread = str_replace("<!-- undorating -->", $undorating, $ratethread);
+		}
 	}
 }
 
