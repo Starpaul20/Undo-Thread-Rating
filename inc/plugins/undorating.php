@@ -102,14 +102,15 @@ function undorating_run()
 
 	if($mybb->input['action'] == "do_undorating")
 	{
-		verify_post_check($mybb->input['my_post_key']);
-	
+		// Verify incoming POST request
+		verify_post_check($mybb->get_input('my_post_key'));
+
 		if($mybb->usergroup['canundorating'] != 1)
 		{
 			error_no_permission();
 		}
 
-		$tid = $mybb->get_input('tid', 1);
+		$tid = $mybb->get_input('tid', MyBB::INPUT_INT);
 		$thread = get_thread($tid);
 
 		if(!$thread['tid'])
@@ -190,7 +191,7 @@ function undorating_usergroup_permission($above)
 function undorating_usergroup_permission_commit()
 {
 	global $mybb, $updated_group;
-	$updated_group['canundorating'] = (int)$mybb->input['canundorating'];
+	$updated_group['canundorating'] = $mybb->get_input('canundorating', MyBB::INPUT_INT);
 }
 
 ?>
