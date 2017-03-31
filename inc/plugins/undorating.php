@@ -199,5 +199,3 @@ function undorating_usergroup_permission_commit()
 	global $mybb, $updated_group;
 	$updated_group['canundorating'] = $mybb->get_input('canundorating', MyBB::INPUT_INT);
 }
-
-?>

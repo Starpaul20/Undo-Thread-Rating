@@ -15,5 +15,3 @@ $l['error_notrated'] = "You haven't rated this thread.";
 $l['redirect_unrated'] = "Your rating on this thread has been removed.<br />You will now be returned to the thread.";
 
 $l['can_undo_ratings'] = "Can undo thread rating?";
-
-?>
