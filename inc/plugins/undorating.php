@@ -76,7 +76,7 @@ function undorating_activate()
 	);
 	$db->insert_query("templates", $insert_array);
 
-	include MYBB_ROOT."/inc/adminfunctions_templates.php";
+	require_once MYBB_ROOT."/inc/adminfunctions_templates.php";
 	find_replace_templatesets("showthread_ratethread", "#".preg_quote('			</ul>
 		</div>')."#i", '			</ul>
 		</div><!-- undorating -->');
@@ -96,7 +96,7 @@ function undorating_deactivate()
 
 	$db->delete_query("templates", "title IN('showthread_ratethread_undo')");
 
-	include MYBB_ROOT."/inc/adminfunctions_templates.php";
+	require_once MYBB_ROOT."/inc/adminfunctions_templates.php";
 	find_replace_templatesets("showthread_ratethread", "#".preg_quote('<!-- undorating -->')."#i", '', 0);
 }
 
