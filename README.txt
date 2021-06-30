@@ -1,6 +1,6 @@
 ## INFORMATION ##
 
-Undo Thread Rating (1.1) for MyBB 1.8
+Undo Thread Rating (1.2) for MyBB 1.8
 Created by: Starpaul20
 Copyright: ©2011
 License: GPL

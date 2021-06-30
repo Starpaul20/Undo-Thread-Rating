@@ -1,3 +1,11 @@
+1.2 (June 30th, 2021)
+- Removed PHP closing tags
+- Use THIS_SCRIPT for template caching
+- Adding License file
+- Added check to see if THIS_SCRIPT is defined
+- Fixing install find/replace
+- Use require_once for template updates
+
 1.1 (March 6th, 2015)
 - Added PostgreSQL and SQLite support
 - Changed (int)$mybb->input to $mybb->get_input
