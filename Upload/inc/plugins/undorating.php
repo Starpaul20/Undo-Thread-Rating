@@ -191,7 +191,7 @@ function undorating_usergroup_permission($above)
 	global $mybb, $lang, $form;
 	$lang->load("undorating", true);
 
-	if($above['title'] == $lang->posting_rating_options && $lang->posting_rating_options)
+	if(isset($lang->posting_rating_options) && $above['title'] == $lang->posting_rating_options)
 	{
 		$above['content'] .= "<div class=\"group_settings_bit\">".$form->generate_check_box("canundorating", 1, $lang->can_undo_ratings, array("checked" => $mybb->input['canundorating']))."</div>";
 	}
